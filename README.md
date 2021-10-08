@@ -20,9 +20,10 @@ The features in a set of CNN feature maps form a vector space. An individual fea
 This modulation and ranking is, deep down, achieved by placing a BilinearCNN2D layer followed by Dense FFN layer. The notebook demonstrates this technique applied to classifying the Stanford Dogs dataset. It's surprisingly effective.
 
 ## Should I use a Bilinear CNN outer product layer in my production image-processing network?
-Bilinear CNN is not cheap! In the demonstration notebook, adding it to EfficientNetB0 for 224x244 images has the following numbers:
+Bilinear CNN is not cheap! In the demonstration notebook, adding it to EfficientNetB0 for 224x244 images gives the following numbers:
 
-Original: 4m total weights, graph compilation 24 seconds, training epoch 33 seconds
+Original: 4m total weights, graph compilation 10 seconds, training epoch 33 seconds
+
 Bilinear: 200m total weights, graph compilation 10 seconds, training epoch 56 seconds
 
 Bilinear prediction time is presumably also affected. Bilinear CNN allows the practitioner to throw a lot more CPU and memory at an image-processing network, and make it slightly more accurate. It is good to have such tools in the toolbox, but this one can be too expensive for a particular application.
