@@ -25,4 +25,4 @@ Bilinear CNN is not cheap! In the demonstration notebook, adding it to Efficient
 Original: 4m total weights, graph compilation 24 seconds, training epoch 33 seconds
 Bilinear: 200m total weights, graph compilation 10 seconds, training epoch 56 seconds
 
-Bilinear prediction time is presumably also affected. Bilinear CNN is a technique that allows us to throw a lot more CPU and memory at an image-processing network, and make it slightly more accurate. Such tools are handy to have in the practitioner's toolbox, but can be too expensive for a particular application.
+Bilinear prediction time is presumably also affected. Bilinear CNN allows the practitioner to throw a lot more CPU and memory at an image-processing network, and make it slightly more accurate. It is good to have such tools in the toolbox, but this one can be too expensive for a particular application.
