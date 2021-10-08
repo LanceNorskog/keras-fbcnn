@@ -15,6 +15,6 @@ This code is lifted and repackaged from https://github.com/NiFangBaAGe/FBCNN , s
 
 ## But what does BilinearCNN do, really?
 
-The features in a set of CNN feature maps form a vector space. An individual feature in this space is an abstract concept. But, suppose instead that there are 7 discrete features in the dataset, and you create many vector samples with these 7 features modulated combinatorically. You could then create a filter that examines all of the samples and decides that a few of the modulator combinations are very good ways to rank the features in importance.
+The features in a set of CNN feature maps form a vector space. An individual feature in this vector space is an abstract concept: the different features are overlapping fields of values. But, suppose instead that there are 7 discrete features in the dataset, and we create many vector samples with these 7 features modulated combinatorically. We then create a filter that examines all of the samples and decides that a few of the modulator combinations are very good ways to rank the features in importance.
 
-This modulation and ranking is achieved by placing a BilinearCNN2D layer followed by Dense FFN layer.
+This modulation and ranking is, deep down, achieved by placing a BilinearCNN2D layer followed by Dense FFN layer. The notebook demonstrates this technique applied to classifying the Stanford Dogs dataset. It's surprisingly effective.
