@@ -28,7 +28,7 @@ setup(
     name='keras-fbcnn',
     version=find_version('keras_fbcnn', '__init__.py'),
     packages=find_packages(),
-    url='https://github.com/LanceNorskog/keras-wedge',
+    url='https://github.com/LanceNorskog/keras-fbcnn',
     license='MIT',
     author='LanceNorskog',
     author_email='LanceNorskog@users.noreply.github.com',
