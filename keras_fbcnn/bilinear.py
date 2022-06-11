@@ -71,7 +71,7 @@ class BilinearCNN1D(tf.keras.layers.Layer):
         # print('right:', right)
         l_shape = left.shape.as_list()
         print('l_shape:', l_shape)
-        assert len(tuple(l_shape)) == 2 
+        assert len(tuple(l_shape)) == 3
         assert tuple(l_shape) == tuple(right.shape.as_list())
         inner_dim = l_shape[1]
         outer_dim = l_shape[2]
