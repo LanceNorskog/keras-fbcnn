@@ -63,28 +63,28 @@ class BilinearCNN1D(tf.keras.layers.Layer):
         # )
         
     def call(self, inputs):
-        # print('call')
+        print('call')
         assert len(inputs) == 2
         left = inputs[0]
-        # print('left:', left)
+        print('left:', left)
         right = inputs[1]
-        # print('right:', right)
+        print('right:', right)
         l_shape = left.shape.as_list()
         print('l_shape:', l_shape)
         assert len(tuple(l_shape)) == 3
         assert tuple(l_shape) == tuple(right.shape.as_list())
         inner_dim = l_shape[1]
         outer_dim = l_shape[2]
-        # print('inner_dim:', inner_dim)
-        # print('outer_dim:', outer_dim)
+        print('inner_dim:', inner_dim)
+        print('outer_dim:', outer_dim)
         output_shape = tf.TensorSpec((None, outer_dim, outer_dim))
-        # print('output_shape', output_shape)
+        print('output_shape', output_shape)
         both = tf.stack([left, right], axis=0)
-        # print('both:', both)
+        print('both:', both)
         swapped = tf.transpose(both, [1, 0, 2, 3])
-        # print('swapped:', swapped)
+        print('swapped:', swapped)
         dotted = tf.map_fn(fn=lambda t: tf.tensordot(t[0], t[1], axes=[0,0]), elems=swapped)
-        # print('dotted:', dotted)
+        print('dotted:', dotted)
         flat = tf.reshape(dotted, (-1, outer_dim * outer_dim), name='r3')
         sqrted = tf.map_fn(fn=lambda t: tf.math.sign(t) * tf.math.sqrt(tf.math.abs(t) + 1e-9), elems=flat)
         normed = tf.map_fn(fn=lambda t: tf.math.l2_normalize(t, axis=-1), elems=sqrted)
