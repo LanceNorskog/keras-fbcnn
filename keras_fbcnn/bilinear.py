@@ -48,9 +48,9 @@ class BilinearCNN2D(tf.keras.layers.Layer):
         return output
     
 """ Given a pair of Flattened tensors, multiply those tensors """
-class Bilinear(tf.keras.layers.Layer):
+class BilinearCNN1D(tf.keras.layers.Layer):
     def __init__(self, **kwargs):
-        super(Bilinear, self).__init__(**kwargs)
+        super(BilinearCNN1D, self).__init__(**kwargs)
 
     # def build(self, input_shape):
         # print('build')
@@ -62,8 +62,6 @@ class Bilinear(tf.keras.layers.Layer):
         #     trainable=True,
         # )
         
-    # NOT FINISHED
-
     def call(self, inputs):
         # print('call')
         assert len(inputs) == 2
@@ -75,16 +73,12 @@ class Bilinear(tf.keras.layers.Layer):
         print('l_shape:', l_shape)
         assert len(tuple(l_shape)) == 2 
         assert tuple(l_shape) == tuple(right.shape.as_list())
-        inner_dim = l_shape[1] * l_shape[2]
-        outer_dim = l_shape[3]
+        inner_dim = l_shape[1]
+        outer_dim = l_shape[2]
         # print('inner_dim:', inner_dim)
         # print('outer_dim:', outer_dim)
         output_shape = tf.TensorSpec((None, outer_dim, outer_dim))
         # print('output_shape', output_shape)
-        left = tf.reshape(left, (-1, inner_dim, outer_dim), name='r1')
-        # print('left 2:', left)
-        right = tf.reshape(right, (-1, inner_dim, outer_dim), name='r2')
-        # print('right 2:', right)
         both = tf.stack([left, right], axis=0)
         # print('both:', both)
         swapped = tf.transpose(both, [1, 0, 2, 3])
