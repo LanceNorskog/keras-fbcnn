@@ -12,3 +12,5 @@ Accuracy for Stanford Dogs class set, training/testing
 Bilinear:
 Train a generic top:
 Test: 0.7928 
+
+The PCA experiment was a failure, but the core experiment was a success.
